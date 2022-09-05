@@ -11,10 +11,20 @@
   {{ if .Site.IsServer }}
   {{ $style := resources.Get "scss/style.scss" | resources.ExecuteAsTemplate "style.scss" . | toCSS (dict "targetPath" "css/style.css" "enableSourceMap" true) }}
   <link rel="stylesheet" href="{{ ($style).RelPermalink }}">
+  {{ $intro := resources.Get "scss/_intro.scss" | resources.ExecuteAsTemplate "intro.scss" . | toCSS (dict "targetPath" "css/intro.css" "enableSourceMap" true) }}
+  <link rel="stylesheet" href="{{ ($intro).RelPermalink }}">
+  {{ $content := resources.Get "scss/_content.scss" | resources.ExecuteAsTemplate "content.scss" . | toCSS (dict "targetPath" "css/content.css" "enableSourceMap" true) }}
+  <link rel="stylesheet" href="{{ ($content).RelPermalink }}">
+ 
   {{ else }}
   {{ $style := resources.Get "scss/style.scss" | resources.ExecuteAsTemplate "style.scss" . | toCSS (dict "targetPath" "css/style.css" "enableSourceMap" false) }}
   <link rel="stylesheet" href="{{ ($style | minify | fingerprint).RelPermalink }}">
+  {{ $intro := resources.Get "scss/_intro.scss" | resources.ExecuteAsTemplate "intro.scss" . | toCSS (dict "targetPath" "css/intro.css" "enableSourceMap" true) }}
+  <link rel="stylesheet" href="{{ ($intro).RelPermalink }}">
+  {{ $content := resources.Get "scss/_content.scss" | resources.ExecuteAsTemplate "content.scss" . | toCSS (dict "targetPath" "css/content.css" "enableSourceMap" true) }}
+  <link rel="stylesheet" href="{{ ($content).RelPermalink }}">
   {{ end }}
+  
 
   {{ block "meta_tags" . }}
     {{ if .Params.description }}<meta name="description" content="{{ .Params.description }}"/>{{ end }}
@@ -28,8 +38,9 @@
     {{ if .Site.Params.twitter_handle }}<meta name="twitter:creator" content="{{ .Site.Params.twitter_handle }}"/>{{ end }}
   {{ end }}
 
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet"> 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;400;700&display=swap" rel="stylesheet"> 
 </head>
 
 {{ $themeStyle := slice "" }}

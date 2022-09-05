@@ -8,9 +8,11 @@
   {{ end }}
 
   <div class="intro">
-    <h1>{{ .Title }}{{ if .Site.Params.addDot }}<span class="dot">.</span>{{ end }}</h1>
-    <div class="intro-content">{{ .Content }}</div>
+    <h1>{{ .Title }}{{ if .Site.Params.addDot }}<span class="dot">.</span>{{ end }}{{ if .Site.Params.addQuestionMark }}<span class="dot">?</span>{{ end }}
+    </h1>
+    <h2>{{ .Params.subtitle }}</h2>
   </div>
+  <div class="intro-content">{{ .Content }}</div>
 
   {{ if .Site.Params.showPostsOnHomepage }}
   {{ $paginator := .Paginate (where .Site.RegularPages "Type" "posts") }}

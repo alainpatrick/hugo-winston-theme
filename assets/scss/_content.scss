@@ -1,24 +1,42 @@
+$breakpoints: (
+  'small': 767px,
+  'medium': 992px,
+  'large': 1200px,
+);
+
+@import 'breakpoints';
+@import 'pygments/github';
+@import 'main-menu-mobile';
+
+
+
 a {
   color: var(--highlight-color);
   text-decoration: none;
   &:hover {
-    text-decoration: underline;
+    text-decoration: none;
   }
 }
 
 h1,
-h2,
 h3 {
   margin-top: 20px;
   margin-bottom: 20px;
   color: var(--heading-color);
   font-family: var(--font-family-heading);
 }
+h2 {
+  font-size: 28px;
+  margin-top: 40px;
+  margin-bottom: 20px;
+  color: var(--highlight-color);
+  font-family: var(--font-family-heading);
+}
 p {
   color: var(--text-color);
   font-family: var(--font-family-paragraph);
-  font-size: 18px;
-  line-height: 24px;
+  font-size: 24px;
+  line-height: 30px;
 }
 
 ol,
@@ -56,6 +74,7 @@ ul {
     font-weight: bold;
     margin-top: 30px;
     margin-bottom: 20px;
+    color: var(--highlight-color);
     &:first-of-type {
       margin-top: 0;
     }
@@ -71,23 +90,12 @@ ul {
     margin-top: 30px;
     margin-bottom: 20px;
   }
-  ul {
-    list-style: disc;
-    li {
-      list-style: disc;
-    }
-  }
-  ol {
-    list-style: decimal;
-    li {
-      list-style: decimal;
-    }
-  }
   ul,
   ol {
     margin-left: 0;
     margin-top: 10px;
     margin-bottom: 20px;
+    list-style: disc;
     li {
       font-size: 18px;
       line-height: 20px;
@@ -102,8 +110,10 @@ ul {
     }
   }
   a {
+    
     text-decoration: underline;
     &:hover {
+      text-decoration: underline;
     }
   }
   blockquote {
